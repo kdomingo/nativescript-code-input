@@ -57,13 +57,20 @@ module.exports = {
       },
     },
     '⚙️': {
-      script: `npx cowsay "@nativescript/* packages will keep your ⚙️ cranking"`,
-      description: '_____________  @nativescript/*  _____________',
+      script: `npx cowsay "@kdomcode/* packages will keep your ⚙️ cranking"`,
+      description: '_____________  @kdomcode/*  _____________',
     },
     // packages
     // build output is always in dist/packages
-    '@nativescript': {
-      'build-all': {
+    '@kdomcode': {
+      // @kdomcode/nativescript-code-input
+			'nativescript-code-input': {
+				build: {
+					script: 'nx run nativescript-code-input:build.all',
+					description: '@kdomcode/nativescript-code-input: Build',
+				},
+			},
+			'build-all': {
         script: 'nx run-many --target=build.all --all',
         description: 'Build all packages',
       },
@@ -73,8 +80,12 @@ module.exports = {
       description: '_____________  Focus (VS Code supported)  _____________',
     },
     focus: {
-      reset: {
-        script: 'nx g @nativescript/plugin-tools:focus-packages',
+      'nativescript-code-input': {
+				script: 'nx run nativescript-code-input:focus',
+				description: 'Focus on @kdomcode/nativescript-code-input',
+			},
+			reset: {
+        script: 'nx g @kdomcode/plugin-tools:focus-packages',
         description: 'Reset Focus',
       },
     },

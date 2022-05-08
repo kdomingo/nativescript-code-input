@@ -1,0 +1,72 @@
+{
+  "root": "packages/nativescript-code-input",
+  "projectType": "library",
+  "sourceRoot": "packages/nativescript-code-input",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/packages/nativescript-code-input",
+        "tsConfig": "packages/nativescript-code-input/tsconfig.json",
+        "packageJson": "packages/nativescript-code-input/package.json",
+        "main": "packages/nativescript-code-input/index.d.ts",
+        "assets": [
+          "packages/nativescript-code-input/*.md",
+          "packages/nativescript-code-input/index.d.ts",
+          "LICENSE",
+          {
+            "glob": "**/*",
+            "input": "packages/nativescript-code-input/platforms/",
+            "output": "./platforms/"
+          }
+        ],
+        "dependsOn": [
+          {
+            "target": "build.all",
+            "projects": "dependencies"
+          }
+        ]
+      }
+    },
+    "build.all": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          "node tools/scripts/build-finish.ts nativescript-code-input"
+        ],
+        "parallel": false
+      },
+      "outputs": [
+        "dist/packages/nativescript-code-input"
+      ],
+      "dependsOn": [
+        {
+          "target": "build.all",
+          "projects": "dependencies"
+        },
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "focus": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          "nx g @nativescript/plugin-tools:focus-packages nativescript-code-input"
+        ],
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/nativescript-code-input/**/*.ts"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

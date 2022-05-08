@@ -1,0 +1,22 @@
+{
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kdomingo/nativescript-code-input.git"
+  },
+  "keywords": [
+    "NativeScript",
+    "JavaScript",
+    "TypeScript",
+    "iOS",
+    "Android"
+  ],
+  "author": {
+    "name": "kdomingo",
+    "email": "none"
+  },
+  "bugs": {
+    "url": "https://github.com/kdomingo/nativescript-code-input/issues"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/kdomingo/nativescript-code-input"
+}
